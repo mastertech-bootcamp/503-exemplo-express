@@ -1,0 +1,14 @@
+body{
+    margin: 0;
+}
+header{
+    color: white;
+    width: 100%;
+    background-color: blueviolet;
+}
+img{
+    width: 200px;
+}
+a{
+    color: white;
+}

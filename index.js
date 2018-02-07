@@ -4,7 +4,7 @@ const app = express();
 
 //Configurações
 app.set('view engine', 'ejs');
-app.use('/site', express.static('public'));
+app.use('/assets', express.static('public'));
 
 //Rotas
 app.get('/', (req, res) => {
@@ -22,7 +22,6 @@ app.get('/blog', (req, res) => {
 app.get('/contato', (req, res) => {
     res.render('contato');
 });
-
 
 //Listen
 app.listen(3000, () => {
