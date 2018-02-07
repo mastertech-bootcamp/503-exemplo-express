@@ -1,10 +1,12 @@
 //Inclusão de bibliotecas
 const express = require('express');
 const app = express();
+const expressMongoDb = require('express-mongo-db');
 
 //Configurações
 app.set('view engine', 'ejs');
 app.use('/assets', express.static('public'));
+app.use(expressMongoDb('mongodb://localhost/waltertech'));
 
 //Rotas
 app.get('/', (req, res) => {
@@ -16,7 +18,15 @@ app.get('/quem-somos', (req, res) => {
 });
 
 app.get('/blog', (req, res) => {
-    res.render('blog');
+    req.db.collection('blog').find({}).toArray((err, dados) => {
+        res.render('blog', {posts: dados});
+    });
+});
+
+app.get('/api', (req, res) => {
+    req.db.collection('blog').find({}).toArray((err, dados) => {
+        res.send(dados);
+    });
 });
 
 app.get('/contato', (req, res) => {

@@ -8,6 +8,10 @@
 </head>
 <body>
     <%- include('header') %>
-    <p>Esse é o blog</p>
+    
+    <% for(let post of posts){ %>
+        <h3><%= post.titulo %></h3>
+        <p><%= post.texto %></p>
+    <% } %>
 </body>
 </html>
